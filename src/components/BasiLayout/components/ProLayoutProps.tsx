@@ -1,14 +1,6 @@
-/*
- * @Description: ProLayout API
- * @Version: 2.0
- * @Author: 白雾茫茫丶
- * @Date: 2023-09-14 15:16:33
- * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-02-02 09:59:21
- */
-import { HeaderProps } from '@ant-design/pro-components'
+import { HeaderProps } from '@ant-design/pro-components';
 
-import { IconFont } from '@/utils/const'
+import { IconFont } from '@/utils/const';
 
 /* 跨站点导航列表 */
 export const appList: HeaderProps['appList'] = [
@@ -75,4 +67,4 @@ export const appList: HeaderProps['appList'] = [
   //   url: 'https://ele-plus-form.baiwumm.com/',
   //   target: '_blank',
   // },
-]
+];

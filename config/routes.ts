@@ -11,7 +11,7 @@
  * 如想要配置图标为 <StepBackwardOutlined /> 则取值应为 stepBackward 或 StepBackward，如想要配置图标为 <UserOutlined /> 则取值应为 user 或者 User
  * @doc https://umijs.org/docs/guides/routes
  */
-import {administrative, dashboard, personalCenter, setting, technicalDocument, teamManage, monitor} from './router'
+import {administrative, dashboard, personalCenter, setting, technicalDocument, teamManage, monitor,communicationplatform} from './router'
 export default [
   {
     path: '/user',
@@ -31,6 +31,7 @@ export default [
   setting,
   teamManage,
   monitor,
+  communicationplatform,
   {
     path: '/',
     redirect: '/dashboard/work-bench',

@@ -1,22 +1,14 @@
-/*
- * @Description: Dashboard-工作台
- * @Version: 2.0
- * @Author: 白雾茫茫丶
- * @Date: 2022-09-02 13:54:14
- * @LastEditors: 白雾茫茫丶
- * @LastEditTime: 2023-10-11 10:05:08
- */
 import { PageContainer } from '@ant-design/pro-components';
 import { useModel } from '@umijs/max';
-import { Col, Row, Space, Typography } from 'antd'
+import { Col, Row, Space, Typography } from 'antd';
 import { FC } from 'react';
 
-import BlogLogs from './components/BlogLogs' // 博客日志
-import GitCommitLog from './components/GitCommitLog' // Git 更新日志
-import LatestAnnouncement from './components/LatestAnnouncement' // 最新公告
-import RenderContent from './components/RenderContent' // 顶部布局
-import StatisticChart from './components/StatisticChart' // 指标卡片
-import TechnologyStack from './components/TechnologyStack' // 主要技术栈
+import BlogLogs from './components/BlogLogs'; // 博客日志
+import GitCommitLog from './components/GitCommitLog'; // Git 更新日志
+import LatestAnnouncement from './components/LatestAnnouncement'; // 最新公告
+import RenderContent from './components/RenderContent'; // 顶部布局
+import StatisticChart from './components/StatisticChart'; // 指标卡片
+import TechnologyStack from './components/TechnologyStack'; // 主要技术栈
 const { Paragraph, Text } = Typography;
 
 const Workbench: FC = () => {
@@ -26,22 +18,25 @@ const Workbench: FC = () => {
   // 渲染副标题
   const renderSecondary = (content: string, rows = 1) => {
     return (
-      <Paragraph ellipsis={{
-        rows,
-        tooltip: {
-          title: content,
-          color: initialState?.Settings?.colorPrimary || 'blue',
-        },
-      }} style={{ marginBottom: 0 }}>
+      <Paragraph
+        ellipsis={{
+          rows,
+          tooltip: {
+            title: content,
+            color: initialState?.Settings?.colorPrimary || 'blue',
+          },
+        }}
+        style={{ marginBottom: 0 }}
+      >
         <Text type="secondary">{content}</Text>
       </Paragraph>
-    )
-  }
+    );
+  };
   return (
     <PageContainer content={<RenderContent />}>
       <Space direction="vertical" size="middle" style={{ display: 'flex', marginTop: 16 }}>
         {/* 指标卡片 */}
-        <div style={{ marginTop: '-12px' }} >
+        <div style={{ marginTop: '-12px' }}>
           <StatisticChart />
         </div>
         <Row gutter={16}>
@@ -64,6 +59,6 @@ const Workbench: FC = () => {
         </Row>
       </Space>
     </PageContainer>
-  )
-}
-export default Workbench
+  );
+};
+export default Workbench;

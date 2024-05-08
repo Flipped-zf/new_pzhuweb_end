@@ -1,26 +1,14 @@
-/*
- * @Description: 表单配置项
- * @Version: 2.0
- * @Author: 白雾茫茫丶
- * @Date: 2023-08-29 10:03:35
- * @LastEditors: 白雾茫茫丶
- * @LastEditTime: 2023-09-21 15:26:50
- */
-import {
-  ProFormRadio,
-  ProFormSegmented,
-  ProFormText,
-} from '@ant-design/pro-components';
-import { useIntl } from '@umijs/max'
+import { ProFormRadio, ProFormSegmented, ProFormText } from '@ant-design/pro-components';
+import { useIntl } from '@umijs/max';
 import { Col, Form, Row } from 'antd';
-import { mapValues } from 'lodash-es'
-import { FC } from 'react'
+import { mapValues } from 'lodash-es';
+import { FC } from 'react';
 
-import { ProFormStatus } from '@/components/CommonProForm'
-import QuillEditor from '@/components/QuillEditor'
-import { formatPerfix } from '@/utils'
-import { AnnouncementTypeEnum, FLAG_OPTS } from '@/utils/const'
-import { ANNOUNCEMENT_TYPE, FLAG, INTERNATION, ROUTES } from '@/utils/enums'
+import { ProFormStatus } from '@/components/CommonProForm';
+import QuillEditor from '@/components/QuillEditor';
+import { formatPerfix } from '@/utils';
+import { AnnouncementTypeEnum, FLAG_OPTS } from '@/utils/const';
+import { ANNOUNCEMENT_TYPE, FLAG, INTERNATION, ROUTES } from '@/utils/enums';
 
 const FormTemplateItem: FC = () => {
   const { formatMessage } = useIntl();
@@ -29,8 +17,10 @@ const FormTemplateItem: FC = () => {
       <ProFormText
         name="title"
         label={formatMessage({ id: formatPerfix(ROUTES.ANNOUNCEMENT, 'title') })}
-        placeholder={formatMessage({ id: INTERNATION.PLACEHOLDER }) +
-          formatMessage({ id: formatPerfix(ROUTES.ANNOUNCEMENT, 'title') })}
+        placeholder={
+          formatMessage({ id: INTERNATION.PLACEHOLDER }) +
+          formatMessage({ id: formatPerfix(ROUTES.ANNOUNCEMENT, 'title') })
+        }
         fieldProps={{
           showCount: true,
           maxLength: 100,
@@ -44,7 +34,8 @@ const FormTemplateItem: FC = () => {
         label={formatMessage({ id: formatPerfix(ROUTES.ANNOUNCEMENT, 'type') })}
         initialValue={ANNOUNCEMENT_TYPE.ANNOUNCEMENT}
         valueEnum={mapValues(AnnouncementTypeEnum, (item: string) =>
-          formatMessage({ id: formatPerfix(ROUTES.ANNOUNCEMENT, `type.${item}`) }))}
+          formatMessage({ id: formatPerfix(ROUTES.ANNOUNCEMENT, `type.${item}`) }),
+        )}
         rules={[{ required: true }]}
       />
       {/* 是否置顶 */}
@@ -76,6 +67,6 @@ const FormTemplateItem: FC = () => {
         </Col>
       </Row>
     </>
-  )
-}
-export default FormTemplateItem
+  );
+};
+export default FormTemplateItem;

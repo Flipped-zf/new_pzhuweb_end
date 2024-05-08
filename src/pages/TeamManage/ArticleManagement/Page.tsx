@@ -142,9 +142,9 @@ const extendControls = [uploadFun(() => {},addImg),myveiw(formRef.current?.getFi
         <ProFormText
             name="title"
             label="文章标题"
-            tooltip="最长为 24 位"
+            tooltip="最长为 50 位"
             placeholder="请输入名称"
-            rules={[{required: true},{max: 24, message: '最长20个字符'}]}
+            rules={[{required: true},{max: 50, message: '最长50个字符'}]}
         />
         <Form.Item
             name='context'

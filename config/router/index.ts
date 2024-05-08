@@ -13,6 +13,8 @@ import setting from './system' // 系统设置模块
 import technicalDocument from './technicalDocument' // 技术文档模块
 import teamManage from './teamManage'
 import monitor from './monitor'
+
+import communicationplatform from "./communicationplatform";
 export {
-    setting, dashboard, administrative, personalCenter, technicalDocument,teamManage,monitor
+    setting, dashboard, administrative, personalCenter, technicalDocument,teamManage,monitor,communicationplatform
 }

@@ -1,7 +1,4 @@
-/**
- * @description: 请求状态码
- * @author: 白雾茫茫丶
- */
+
 export enum REQUEST_CODE {
   NOSUCCESS = -1, // 表示请求成功，但操作未成功
   SUCCESS = 200, // 表示请求成功
@@ -11,10 +8,7 @@ export enum REQUEST_CODE {
   INTERNALSERVERERROR = 500, // 表示服务器内部错误
 }
 
-/**
- * @description: 请求方式
- * @author: 白雾茫茫丶
- */
+
 export enum REQUEST_METHODS {
   GET = 'GET',
   POST = 'POST',
@@ -23,18 +17,12 @@ export enum REQUEST_METHODS {
   PATCH = 'PATCH'
 }
 
-/**
- * @description: 请求前缀
- * @author: 白雾茫茫丶
- */
+
 export enum BASEURL {
   API = '/api'
 }
 
-/**
- * @description: 存储在 localstorage 的 key
- * @author: 白雾茫茫丶
- */
+
 export enum LOCAL_STORAGE {
   USER_INFO = 'USER_INFO', // 用户信息
   ACCESS_TOKEN = 'ACCESS_TOKEN', // ACCESS_TOKEN
@@ -42,10 +30,6 @@ export enum LOCAL_STORAGE {
   LOCK_SLEEP = 'LOCK_SLEEP', // 睡眠
 }
 
-/**
- * @description: 菜单路由
- * @author: 白雾茫茫丶
- */
 export enum ROUTES {
   LOGIN = '/user/login', // 登录页
   WORKBENCH = '/dashboard/work-bench', // 指示面板-工作台
@@ -66,18 +50,17 @@ export enum ROUTES {
   ARTICLEMANAGEMENT = '/team-manage/article-manage', // 团队管理-成果管理
   ARTICLEMPAGREANAGEMENT = '/team-manage/article-page', // 团队管理-成果管理
   AUDITMANAGEMENT = '/team-manage/audit-manage', // 团队管理-审核管理
+  PROJECTMANAGEMENT = '/team-manage/project-manage',// 团队管理-任务管理
   SYSTEMRMONITOR = '/monitor/server', // 服务监控-服务cpu
   JOBMRMONITOR = '/monitor/job', // 服务监控-定时任务
   JOBLOGMRMONITOR = '/monitor/job-log', // 服务监控-定时任务日志
   LOGINLOGMRMONITOR = '/monitor/login-log' ,// 服务监控-登录日志
-  ONLINEMRMONITOR = '/monitor/online' // 服务监控-在线用户
-
+  ONLINEMRMONITOR = '/monitor/online', // 服务监控-在线用户
+  PLATFORM = '/communication-platform/platform-square',// 交流平台-广场
+  PLATFORMDETAIL = '/communication-platform/exchange_detail'// 交流平台-广场
 }
 
-/**
- * @description: 公共国际化 key
- * @author: 白雾茫茫丶
- */
+
 export enum INTERNATION {
   OPERATION = 'global.table.operation', // 操作
   STATUS = 'global.status', // 状态
@@ -106,10 +89,7 @@ export enum INTERNATION {
   UPLOADIMAGE = 'components.UploadImage'
 }
 
-/**
- * @description: 表格下拉操作类型
- * @author: 白雾茫茫丶
- */
+
 export enum OPERATION {
   ADD = 'add', // 新增
   EDIT = 'edit', // 编辑
@@ -117,47 +97,32 @@ export enum OPERATION {
   ADDCHILD = 'add-child', // 添加子级
 }
 
-/**
- * @description: 登录类型
- * @author: 白雾茫茫丶
- */
+
 export enum LOGIN_TYPE {
   MOBILE = 'mobile', // 手机登录
   ACCOUNT = 'account', // 账号登录
 }
 
-/**
- * @description: 状态
- * @author: 白雾茫茫丶
- */
+
 export enum STATUS {
   DISABLE, // 禁用
   NORMAL, // 正常
 }
 
-/**
- * @description: 是否
- * @author: 白雾茫茫丶
- */
+
 export enum FLAG {
   NO, // 否
   YES, // 是
 }
 
-/**
- * @description: 性别
- * @author: 白雾茫茫丶
- */
+
 export enum SEX {
   FEMALE = '0', // 女
   MALE = '1', // 男
   PRIVACY = '2', // 隐私
 }
 
-/**
- * @description: 消息类型
- * @author: 白雾茫茫丶
- */
+
 export enum ANNOUNCEMENT_TYPE {
   ANNOUNCEMENT = '1', // 公告
   ACTIVITY = '2', // 活动
@@ -165,10 +130,7 @@ export enum ANNOUNCEMENT_TYPE {
   NOTIFICATION = '4', // 通知
 }
 
-/**
- * @description: 组织类型
- * @author: 白雾茫茫丶
- */
+
 export enum ORG_TYPE {
   GROUP = 'group', // 集团
   COMPANY = 'company', // 公司
@@ -176,20 +138,14 @@ export enum ORG_TYPE {
   DEPARTMENT = 'department', // 部门
 }
 
-/**
- * @description: 菜单类型
- * @author: 白雾茫茫丶
- */
+
 export enum MENU_TYPE {
   DIR = 'dir', // 目录
   MENU = 'menu', // 菜单
   BUTTON = 'button', // 按钮
 }
 
-/**
- * @description: 窗口打开方式
- * @author: 白雾茫茫丶
- */
+
 export enum TARGET_TYPE {
   BLANK = '_blank',
   SELF = '_self',
@@ -197,29 +153,20 @@ export enum TARGET_TYPE {
   TOP = '_top'
 }
 
-/**
- * @description: 导航菜单的位置,side 为正常模式，top菜单显示在顶部，mix 两种兼有
- * @author: 白雾茫茫丶
- */
+
 export enum LAYOUT_TYPE {
   SIDE = 'side', // 侧边菜单
   TOP = 'top', // 顶部菜单
   MIX = 'mix', // 混合菜单
 }
 
-/**
- * @description: 主题风格
- * @author: 白雾茫茫丶
- */
+
 export enum MENU_THEME {
   DARK = 'dark', // 暗黑风格
   LIGHT = 'light', // 亮色风格
 }
 
-/**
- * @description: 国际化语言
- * @author: 白雾茫茫丶
- */
+
 export enum LANGS {
   CN = 'zh-CN', // 中文
   US = 'en-US', // 英文
@@ -227,19 +174,13 @@ export enum LANGS {
   TW = 'zh-TW', // 繁体中文
 }
 
-/**
- * @description: EventBus type
- * @author: 白雾茫茫丶
- */
+
 export enum EVENTBUS_TYPE {
   ANNOUNCEMENT = 'announcement-detail', // 查看公告详情
   UPDATEUNREADYCOUNT = 'update-unready-count', // 更新未读消息数量
 }
 
-/**
- * @description: TabsLayout 多标签类型
- * @author: 白雾茫茫丶
- */
+
 export enum TABSLAYOUT {
   CLOSE = 'close', // 关闭当前
   REFRESH = 'refresh', // 重新加载

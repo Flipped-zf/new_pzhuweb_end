@@ -1,18 +1,9 @@
-/*
- * @Description: 公共页脚版权
- * @Version: 2.0
- * @Author: 白雾茫茫丶
- * @Date: 2022-09-08 11:09:03
- * @LastEditors: Cyan
- * @LastEditTime: 2023-08-11 16:48:23
- */
 import { GithubOutlined } from '@ant-design/icons';
 import { DefaultFooter } from '@ant-design/pro-components';
 
-import styles from './index.module.less'
+import styles from './index.module.less';
 
 const Footer: React.FC = () => {
-
   const currentYear = new Date().getFullYear();
 
   return (
@@ -33,7 +24,6 @@ const Footer: React.FC = () => {
           href: 'https://github.com/Flipped-zf',
           blankTarget: true,
         },
-
       ]}
     />
   );

@@ -9,12 +9,9 @@ import type { InitialStateTypes } from '@/utils/types'
 export default function access(initialState: InitialStateTypes | undefined) {
   // 获取按钮权限集合
   const { Permissions, RouteMenu } = initialState ?? {};
-  /**
-   * @description: 获取当前所有路由
-   * @author: 白雾茫茫丶
-   */
+
   const getRouteNames = (tree = RouteMenu): string[] => {
-    // 收集当前层级的所有 name 属性 
+    // 收集当前层级的所有 name 属性
     let result: string[] = []
     // 遍历收集
     forEach(tree, (node: API.MENUMANAGEMENT) => {

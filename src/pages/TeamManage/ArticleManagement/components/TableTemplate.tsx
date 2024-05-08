@@ -2,7 +2,7 @@ import {ActionType, ProColumns, ProTable} from '@ant-design/pro-components';
 import {dropByCacheKey,history} from '@umijs/max';
 import {useBoolean, useRequest} from 'ahooks';
 import {App, Button, Modal, Popconfirm, Switch, Typography} from 'antd';
-import {FC, useRef, useState} from 'react';
+import {FC, useContext, useRef, useState} from 'react';
 
 import DropdownMenu from '@/components/DropdownMenu';
 import {
@@ -18,13 +18,14 @@ import {delArticle, getArticleList, setArticleStatus} from '@/services/team/arti
 import {formatPerfix, formatResponse, optionsToValueEnum, useDictCode} from '@/utils';
 import {ASTATUS, INTERNATION, ROUTES, STATUS} from '@/utils/enums';
 import {SearchParams} from '@/utils/types/team/articleManage';
-import {FormattedMessage, useIntl} from '@@/exports';
+import {FormattedMessage, KeepAliveContext, useIntl} from '@@/exports';
 
 
 const {Text} = Typography
 const TableTemplate: FC = () => {
   const { formatMessage } = useIntl();
   const { message } = App.useApp();
+  const { refreshTab } = useContext(KeepAliveContext);
 
   // 获取表格实例
   const tableRef = useRef<ActionType>();
@@ -215,8 +216,9 @@ const TableTemplate: FC = () => {
           pathName={ROUTES.ARTICLEMANAGEMENT}
           editCallback={ [ASTATUS.CHECKED,ASTATUS.CHECK].includes(record.article_status) ? undefined : () => {
             // const result = cloneDeep(record)
-            dropByCacheKey(ROUTES.ARTICLEMPAGREANAGEMENT)
+            // dropByCacheKey(ROUTES.ARTICLEMPAGREANAGEMENT)
             history.push(`${ROUTES.ARTICLEMPAGREANAGEMENT}?id=${record.article_id}`)
+            refreshTab(location.pathname)
           }}
           deleteParams={{
             request: delArticle,

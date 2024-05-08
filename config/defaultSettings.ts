@@ -23,7 +23,7 @@ const Settings: LayoutSettings & {
   fixedHeader: true,
   fixSiderbar: true,
   colorWeak: false,
-  title: 'Xmw Admin',
+  title: 'WEB团队',
   pwa: false,
   logo: '/logo.svg',
   iconfontUrl: '/favicon.ico',

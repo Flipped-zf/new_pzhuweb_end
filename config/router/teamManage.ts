@@ -44,6 +44,13 @@ export default {
       access: 'adminRouteFilter',
       exact: true,
     },
+    {
+      path: '/team-manage/project-manage',
+      name: 'project-manage',
+      component: './TeamManage/ProjectManagement',
+      access: 'adminRouteFilter',
+      exact: true,
+    },
   ],
 
 }

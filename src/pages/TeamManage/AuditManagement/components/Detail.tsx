@@ -5,7 +5,7 @@ import moment from 'moment';
 import {FC, useEffect, useState} from 'react';
 
 import {getPageDetail} from '@/services/team/audit';
-import {useDictCode} from '@/utils';
+import {findKey, useDictCode} from '@/utils';
 const DetailPage:FC = ({id}) => {
 
     const [detailPAge,setPage] = useState({})
@@ -30,9 +30,7 @@ const DetailPage:FC = ({id}) => {
     }, [id]);
 
 
-    function findKey(options,key) {
-        return options?.find((item) => item.value === key).label ?? ''
-    }
+
 
 
     return (

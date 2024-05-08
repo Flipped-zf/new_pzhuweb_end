@@ -1,11 +1,4 @@
-/*
- * @Description: 接口数据类型定义
- * @Version: 2.0
- * @Author: 白雾茫茫丶
- * @Date: 2022-09-23 10:23:23
- * @LastEditors: 白雾茫茫丶
- * @LastEditTime: 2023-10-07 14:24:23
- */
+
 
 import type { CommonTypes, Flag, Langs, RequestMethods, TableTimes } from '@/utils/types'
 import {Status} from '@/utils/types';
@@ -16,16 +9,10 @@ import type { LayoutTypes, MenuTheme, MenuTypes, TargetTypes } from '@/utils/typ
 declare global {
   namespace API {
 
-    /**
-   * @description: 国际化多语言层级对象
-   * @author: 白雾茫茫丶
-   */
+
     type LOCALESLANGAll = Record<Langs, string>
 
-    /**
-    * @description: 智能行政-组织管理
-    * @author: 白雾茫茫丶
-    */
+
     type ORGANIZATION = {
       org_id: string; // 组织id
       org_name: string; // 组织名称
@@ -35,10 +22,7 @@ declare global {
       children?: ORGANIZATION[];
     } & TableTimes & CommonTypes
 
-    /**
-     * @description: 智能行政-岗位管理
-     * @author: 白雾茫茫丶
-     */
+
     type JOBSMANAGEMENT = TableTimes & {
       jobs_id: string; // 岗位id
       jobs_name: string; // 岗位名称
@@ -46,10 +30,7 @@ declare global {
     } & Pick<ORGANIZATION, 'org_id' | 'org_name' | 'org_logo'>
       & Omit<CommonTypes, 'status'>;
 
-    /**
-    * @description: 系统设置-菜单管理
-    * @author: 白雾茫茫丶
-    */
+
     type MENUMANAGEMENT = {
       menu_id: string; // 菜单id
       name: string; // 国际化对应的name
@@ -77,19 +58,13 @@ declare global {
       children?: MENUMANAGEMENT[];
     } & TableTimes & LOCALESLANGAll & Omit<CommonTypes, 'leader' | 'describe'>;
 
-    /**
-    * @description: 权限菜单
-    * @author: 白雾茫茫丶
-    */
+
     type PERMISSION = TableTimes & {
       permission_id: string; // 权限id
       role_id: string; // 角色id
     } & Pick<MENUMANAGEMENT, 'menu_id'>;
 
-    /**
-       * @description: 系统设置-角色管理
-       * @author: 白雾茫茫丶
-       */
+
     type ROLEMANAGEMENT = {
       role_id: string; // 角色id
       role_name: string; // 角色名称
@@ -103,10 +78,7 @@ declare global {
       dict_name: string; // 角色名称
       dict_code: string; // 角色编码
     } & TableTimes & Omit<CommonTypes, 'parent_id' | 'leader'>;
-    /**
-     * @description: 系统设置-用户管理
-     * @author: 白雾茫茫丶
-     */
+
     type USERMANAGEMENT = TableTimes & {
       user_id: string; // 用户id
       user_name: string; // 用户名称
@@ -133,10 +105,7 @@ declare global {
       & Pick<ROLEMANAGEMENT, 'role_id' | 'role_name'>
       & Pick<CommonTypes, 'sort' | 'founder' | 'status'>;
 
-    /**
-     * @description: 智能行政-活动公告
-     * @author: 白雾茫茫丶
-     */
+
     type ANNOUNCEMENT = TableTimes & {
       announcement_id: string; // id 主键
       title: string; // 标题
@@ -147,28 +116,18 @@ declare global {
       already: Flag; // 是否已读
     } & Pick<USERMANAGEMENT, 'user_id' | 'avatar_url' | 'cn_name'> & Pick<CommonTypes, 'status'>
 
-    /**
-     * @description: 智能行政-活动公告-已读
-     * @author: 白雾茫茫丶
-     */
+
     type ALREADY = TableTimes & {
       id: string;
     } & Pick<USERMANAGEMENT, 'user_id'> & Pick<ANNOUNCEMENT, 'announcement_id'>
 
-    /**
-     * @description: 系统设置-国际化
-     * @author: 白雾茫茫丶
-     */
     type INTERNATIONALIZATION = TableTimes & {
       id: string;
       name: string;
       children?: INTERNATIONALIZATION[];
     } & LOCALESLANGAll & Pick<CommonTypes, 'parent_id' | 'founder' | 'sort'>;
 
-    /**
-   * @description: 系统设置-操作日志
-   * @author: 白雾茫茫丶
-   */
+
     type OPERATIONLOG = TableTimes & {
       log_id: string; // id
       content: string; // 日志内容
@@ -190,6 +149,8 @@ declare global {
       attachment?: string | null;
       article_type?:string;
       article_status?:string;
+      posterlink: string;
+      readnumber: string;
     } & TableTimes & Omit<CommonTypes, 'parent_id' | 'leader'>;
 
     type ACHIEVEMENTMANAGEMENT = {
@@ -202,6 +163,8 @@ declare global {
       achievement?: string | null;
       article_type?:string;
       article_status?:string;
+      posterlink: string;
+      readnumber: string;
     } & TableTimes & Omit<CommonTypes, 'parent_id' | 'leader'>;
 
 
@@ -217,6 +180,7 @@ declare global {
       pinned: Status; // 是否置顶
       article_status?: string;
       article_type?:string;
+      readnumber: string;
     } & TableTimes & Omit<CommonTypes, 'parent_id' | 'leader'>;
 
 
@@ -279,6 +243,20 @@ declare global {
     type KICKMONITOR = {
       uid: string;
       user_name: string;
+    }
+
+    type EXCHANGE = {
+      type: string;
+      current: number;
+      pageSize: number
+    }
+
+    type PROJECTMANAGE = {
+      name: string;
+      description: string;
+      start_date: Date;
+      end_date: Date;
+      personIds?: [];
     }
   }
 }

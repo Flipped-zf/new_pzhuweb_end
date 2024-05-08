@@ -1,11 +1,4 @@
-/*
- * @Description: umi-Request 请求封装
- * @Version: 2.0
- * @Author: 白雾茫茫丶
- * @Date: 2023-09-06 10:12:49
- * @LastEditors: 白雾茫茫丶
- * @LastEditTime: 2023-10-17 09:18:19
- */
+
 import 'nprogress/nprogress.css';
 
 import { AxiosRequestConfig, request, RequestConfig, RequestError, RequestOptions } from '@umijs/max';
@@ -17,19 +10,11 @@ import { getLocalStorageItem, isSuccess, logoutToLogin } from '@/utils' // 全�
 import { BASEURL, LOCAL_STORAGE, REQUEST_CODE } from '@/utils/enums'
 import type { Response } from '@/utils/types'
 
-/**
- * @description: 防抖函数统一处理异常错误
- * @Author: 白雾茫茫丶
- */
 const debounceError = debounce((content: string, duration = 3) => {
   message.error(content, duration);
 }, 300);
 
-/**
- * @description: 运行时配置，封装统一请求
- * @doc https://umijs.org/docs/max/request
- * @author: 白雾茫茫丶
- */
+
 const umiRequest: RequestConfig = {
   baseURL: BASEURL.API, // 请求前缀
   timeout: 30 * 1000, // 超时时间，默认 30 s

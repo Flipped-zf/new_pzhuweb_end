@@ -1,0 +1,440 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 35px;
+  //min-height: 750px;
+  //mask: linear-gradient(90deg, #000 70%, rgba(0,0,0,0.3)); //linear-gradient(110deg, #000 10%, transparent 70%, transparent);
+  background: url(https://res.cloudinary.com/muhammederdem/image/upload/v1536405234/starwars/death_star.jpg) center no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  @media screen and (max-width: 992px) {
+    & {
+      height: auto;
+      width: 100vw;
+      //min-height: 100vh;
+    }
+  }
+}
+
+.product-slider__card  {
+  height: 350px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  //transition: all 0.5s;
+  overflow: hidden;
+  position: relative;
+  border-radius: 30px;
+  user-select:none;
+  background-size: cover;
+  background-position: center;
+  .user_head {
+
+    text-align: center;
+  }
+
+  .product-slider__content {
+    color: #fff;
+    padding-top: 1px;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    //padding-left: 100px;
+    padding-right: 20px;
+    .product-slider__title {
+      margin: 0;
+      margin-bottom: 10px;
+      font-weight: 900;
+      font-size: 41px;
+      line-height: 1.2em;
+      letter-spacing: 2px;
+      width: 100%;
+      word-break: break-all;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2; /* 这里是超出几行省略 */
+      overflow: hidden;
+    }
+    @media screen and (max-width: 1200px) {
+      .product-slider__title {
+        font-size: 34px;
+      }
+    }
+    @media screen and (max-width: 576px) {
+      .product-slider__title {
+        font-size: 24px;
+      }
+    }
+    .product-slider__price {
+      display: block;
+      font-size: 24px;
+    }
+    @media screen and (max-width: 1200px) {
+      .product-slider__price {
+        font-size: 36px;
+      }
+    }
+    @media screen and (max-width: 576px) {
+      .product-slider__price {
+        font-size: 30px;
+      }
+    }
+    .product-ctr {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      transition: all 0.5s;
+      .product-labels__group {
+
+      }
+      .product-inf {
+        width: 60px;
+        height: 60px;
+      }
+      .hr-vertical {
+        width: 1px;
+        background: #9fa3a7;
+        align-self: stretch;
+        margin: 0 35px;
+        flex-shrink: 0;
+        opacity: 0.5;
+      }
+
+      @media screen and (max-width: 767px) {
+        .product-labels {
+          width: 100%;
+        }
+      }
+    }
+    @media screen and (max-width: 992px) {
+      .product-ctr {
+        justify-content: center;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .product-ctr {
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+      }
+      .product-ctr .hr-vertical {
+        width: 100%;
+        margin: 35px 0;
+        height: 1px;
+      }
+    }
+    .product-slider__bottom {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-around;
+      .product-slider__cart {
+        box-shadow: 0 7px 99px 0 rgba(204, 51, 66, 0.6);
+        background-image: linear-gradient(-45deg, #cc3843 0%, #cb193f 100%);
+        border: none;
+        color: #fff;
+        padding: 10px 30px;
+        border-radius: 50px;
+        min-height: 50px;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 2px;
+        margin-right: 20px;
+        cursor: pointer;
+      }
+      @media screen and (max-width: 768px) {
+        .product-slider__cart {
+          margin-right: 30px;
+        }
+      }
+      @media screen and (max-width: 576px) {
+        .product-slider__cart {
+          width: 100%;
+          max-width: 300px;
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: 50px;
+        }
+      }
+      :global {
+        .product-slider__fav {
+          color: #888e94;
+          background: none;
+          border: none;
+          position: relative;
+          padding-left: 50px;
+          outline: none;
+          cursor: pointer;
+        }
+        .product-slider__fav:focus {
+          outline: none;
+        }
+        .product-slider__fav .heart {
+          display: block;
+          position: absolute;
+          left: 28px;
+          transform: translate(-50%, -50%) scale(0.7);
+          top: 50%;
+          pointer-events: none;
+          width: 100px;
+          height: 100px;
+          background: url("https://res.cloudinary.com/muhammederdem/image/upload/v1536405215/starwars/heart.png") no-repeat;
+          background-position: 0 0;
+          cursor: pointer;
+          transition: background-position 1s steps(28);
+          transition-duration: 0s;
+        }
+        .product-slider__fav .heart.is-active {
+          transition-duration: 1s;
+          background-position: -2800px 0;
+        }
+      }
+    }
+
+  }
+  @media screen and (max-width: 1200px) {
+    .product-slider__content {
+      padding-left: 220px;
+    }
+  }
+  @media screen and (max-width: 992px) {
+    .product-slider__content {
+      padding: 20px 60px 100px;
+      padding-top: 280px;
+      text-align: center;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .product-slider__content {
+      padding: 20px 30px 50px;
+      padding-top: 300px;
+    }
+  }
+
+}
+
+@media screen and (max-width: 996px) {
+  .product-slider__card {
+    height: auto;
+  }
+}
+.content {
+  height: 100%;
+  margin: auto;
+  width: 100%;
+  max-width: 1050px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  .bgShape {
+    height: 90%;
+    background-image: linear-gradient(-45deg, #cc3843 0%, #cb193f 100%);
+    box-shadow: 0px 30px 139px 0px rgba(10, 22, 31, 0.26);
+    border-radius: 30px;
+    padding: 45px 40px;
+    width: 30%;
+    position: absolute;
+    top: 5% ;
+    left: 10%;
+    display: flex;
+    align-items: center;
+
+    img {
+      object-fit: contain;
+      width: 100%;
+      display: block;
+      object-position: left center;
+      opacity: 0.2;
+      transform: rotate(-90deg) translateY(-50%);
+      max-width: inherit;
+      left: 10px;
+      position: absolute;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    .bgShape {
+      width: 45%;
+    }
+  }
+  @media screen and (max-width: 992px) {
+    .bgShape {
+      width: 70%;
+      height: 290px;
+      align-items: flex-start;
+      padding: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .bgShape {
+      padding: 30px;
+      width: 95%;
+      border-radius: 20px;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .bgShape {
+      height: 200px;
+      padding: 30px;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    .bgShape img {
+      width: 430px;
+      left: 10px;
+    }
+  }
+  @media screen and (max-width: 992px) {
+    .bgShape img {
+      transform: none;
+      width: 100%;
+      position: relative;
+      left: auto;
+      margin-left: auto;
+      margin-right: auto;
+      object-fit: contain;
+      height: 100%;
+      object-position: top center;
+    }
+  }
+  .product-slider {
+    width: 65%;
+    //height: 85%;
+    border-radius: 30px;
+    box-shadow: 0 28px 79px 0 rgba(10, 22, 31, 0.35);
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    :global {
+      //.icon {
+      //  display: inline-block;
+      //  width: 1em;
+      //  height: 1em;
+      //  stroke-width: 0;
+      //  stroke: currentColor;
+      //  fill: currentColor;
+      //}
+      .next, .prev {
+        z-index: 22;
+        display: inline-flex;
+        border: none;
+        width: 61px;
+        height: 61px;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        position: absolute;
+        top: 50%;
+        outline: none;
+        cursor: pointer;
+      }
+      .next.disabled, .prev.disabled {
+        cursor: not-allowed;
+      }
+      .next:focus, .prev:focus {
+        outline: none;
+      }
+      @media screen and (max-width: 992px) {
+        .next, .prev {
+          top: 170px;
+        }
+      }
+
+      .prev {
+        left: -30%;
+        transform: translate(-100%, -50%);
+      }
+      @media screen and (max-width: 1200px) {
+        .prev {
+          left: -3%;
+        }
+      }
+      @media screen and (max-width: 992px) {
+        .prev {
+          left: 0;
+          transform: translate(-50%, -50%);
+        }
+      }
+      @media screen and (max-width: 576px) {
+        .prev {
+          transform: translate(20%, -50%);
+        }
+      }
+
+      .next {
+        right: 0;
+        transform: translate(50%, -50%);
+      }
+      @media screen and (max-width: 576px) {
+        .next {
+          transform: translate(-20%, -50%);
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    .product-slider {
+      width: 80%;
+    }
+  }
+  @media screen and (max-width: 992px) {
+    .product-slider {
+      width: 80%;
+      left: 50%;
+      transform: translateX(-50%);
+      height: auto;
+      position: relative;
+      top: 0;
+      margin-top: 170px;
+      margin-bottom: 100px;
+    }
+    .product-slider br {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .product-slider {
+      border-radius: 20px;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .product-slider {
+      width: 85%;
+      margin-top: 130px;
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 1200px) {
+  .content {
+    max-width: 920px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .content {
+    width: 100vw;
+    max-width: 920px;
+    margin-top: 20px;
+    height: auto;
+    min-height: 100vh;
+  }
+}
+@media screen and (max-width: 767px) {
+  .content {
+    margin-top: 20px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .content {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+

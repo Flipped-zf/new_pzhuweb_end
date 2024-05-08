@@ -8,4 +8,7 @@ export enum BusinessEvents {
   USER_ONLINE = 'USER_ONLINE',
   USER_OFFLINE = 'USER_OFFLINE',
   USER_KICK = 'USER_KICK',
+
+  COMMNT_MSG = 'COMMNT_MSG', // 评论
+  DB_MSG = 'DB_MSG' // 任务代办
 }

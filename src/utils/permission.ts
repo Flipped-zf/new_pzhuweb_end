@@ -1,11 +1,4 @@
-/*
- * @Description: 组件按钮操作权限集合
- * @Version: 2.0
- * @Author: 白雾茫茫丶
- * @Date: 2022-12-05 15:11:02
- * @LastEditors: 白雾茫茫丶
- * @LastEditTime: 2023-09-18 17:36:18
- */
+
 
 export default {
   administrative: {
@@ -82,11 +75,15 @@ export default {
       delete: 'team-manage:article-manage:delete', // 删除
       view: 'team-manage:article-manage:view', // 预览
     },
-    '/team-manage/audit-manage': {
+    'audit-manage': {
       view: 'team-manage:article-manage:view',
       edit: 'team-manage:article-manage:edit',
     },
-
+    'project-manage' : {
+      add :'team-manage:project-manage:add',
+      edit: 'team-manage:project-manage:edit', // 编辑
+      delete: 'team-manage:project-manage:delete', // 删除
+    },
   },
 
   monitor: {
@@ -102,6 +99,12 @@ export default {
     },
     online:{
       kick: 'monitor:online:kick',
+    },
+  },
+
+  'communication-platform':{
+    'platform-square': {
+      comment: 'platform-square:comment',
     },
   },
 }

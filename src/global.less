@@ -1,3 +1,4 @@
+
 /*
   1. 使用更直观的 box-sizing 模型
 */
@@ -48,5 +49,27 @@ p, h1, h2, h3, h4, h5, h6 {
 .colorWeak {
   filter: invert(80%);
 }
+// 富文本图片居中
+.align-center {
+  img {
+    display: inline-block;
+  }
+}
 
+.textLine2 {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* 这里是超出几行省略 */
+  overflow: hidden;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  border-radius: 10px;
+}
 
+::-webkit-scrollbar-thumb {
+  background-color: rgb(21 20 26 / 63%);
+  border-radius: 10px;
+}

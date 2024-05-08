@@ -1,19 +1,10 @@
-/*
- * @Description: 进度图
- * @Version: 2.0
- * @Author: 白雾茫茫丶
- * @Date: 2023-08-08 15:18:37
- * @LastEditors: Cyan
- * @LastEditTime: 2023-08-08 15:22:04
- */
-
 import { Bullet } from '@ant-design/charts';
-import { FC } from 'react'
+import { FC } from 'react';
 
 const BulletChart: FC = () => {
   const data = [
     {
-      title: '客户满意度',
+      title: '任务完成情况',
       ranges: [40, 70, 100],
       measures: [80],
       target: 85,
@@ -101,6 +92,6 @@ const BulletChart: FC = () => {
       ],
     },
   };
-  return <Bullet {...config} />
-}
-export default BulletChart
+  return <Bullet {...config} />;
+};
+export default BulletChart;

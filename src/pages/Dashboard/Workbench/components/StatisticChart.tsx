@@ -1,18 +1,10 @@
-/*
- * @Description: 指标卡片
- * @Version: 2.0
- * @Author: 白雾茫茫丶
- * @Date: 2023-08-08 14:50:57
- * @LastEditors: Cyan
- * @LastEditTime: 2023-08-08 15:20:05
- */
 import { StatisticCard } from '@ant-design/pro-components';
 import { Col, Divider, Row, Space } from 'antd';
 import type { FC } from 'react';
 
-import BulletChart from './BulletChart' // 进度图
-import TinyAreaChart from './TinyAreaChart' // 迷你面积图
-import TinyColumnChart from './TinyColumnChart' // 迷你柱形图
+import BulletChart from './BulletChart'; // 进度图
+import TinyAreaChart from './TinyAreaChart'; // 迷你面积图
+import TinyColumnChart from './TinyColumnChart'; // 迷你柱形图
 
 const { Statistic } = StatisticCard;
 
@@ -21,21 +13,22 @@ const StatisticChart: FC = () => {
     <Row gutter={20}>
       <Col span={6}>
         <StatisticCard
-          title="总销售额"
+          title="成员指标"
           tip="指标说明"
           style={{ height: 200 }}
           statistic={{
-            value: 1254568,
-            prefix: '¥',
+            value: 123,
             precision: 2,
-            description: <Space>
-              <Statistic title="日同比" value="6.47%" trend="up" />
-              <Statistic title="周同比" value="23.58%" trend="down" />
-            </Space>,
+            description: (
+              <Space>
+                <Statistic title="日同比" value="6.47%" trend="up" />
+                <Statistic title="周同比" value="23.58%" trend="down" />
+              </Space>
+            ),
           }}
         >
           <Divider type="horizontal" />
-          <Statistic value="88.98%" title="前年同期业绩完成率" />
+          <Statistic value="88.98%" title="前年同期完成率" />
         </StatisticCard>
       </Col>
       <Col span={6}>
@@ -43,7 +36,7 @@ const StatisticChart: FC = () => {
           title="访问量"
           tip="指标说明"
           style={{ height: 200 }}
-          statistic={{ value: 8846 }}
+          statistic={{ value: 156 }}
           chart={<TinyAreaChart />}
         >
           <Statistic value="56.12%" title="日访问量占比" />
@@ -51,10 +44,10 @@ const StatisticChart: FC = () => {
       </Col>
       <Col span={6}>
         <StatisticCard
-          title="支付笔数"
+          title="文章发布数量"
           tip="指标说明"
           style={{ height: 200 }}
-          statistic={{ value: 65605 }}
+          statistic={{ value: 23 }}
           chart={<TinyColumnChart />}
         >
           <Statistic value="78.82%" title="转化率" />
@@ -62,10 +55,10 @@ const StatisticChart: FC = () => {
       </Col>
       <Col span={6}>
         <StatisticCard
-          title="客户满意度"
+          title="任务"
           tip="指标说明"
           style={{ height: 200 }}
-          statistic={{ value: 80, suffix: '%' }}
+          statistic={{ value: 12, suffix: '%' }}
           chart={<BulletChart />}
         >
           <Space>
@@ -75,6 +68,6 @@ const StatisticChart: FC = () => {
         </StatisticCard>
       </Col>
     </Row>
-  )
-}
-export default StatisticChart
+  );
+};
+export default StatisticChart;

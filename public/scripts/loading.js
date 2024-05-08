@@ -190,7 +190,7 @@
 </div>
 </div>
 <div style="display: flex; align-items: center; justify-content: center;font-size: 40px;font-weight: bold">
-Xmw Admin
+WEB团队
 </div>
 </div>
 </div>

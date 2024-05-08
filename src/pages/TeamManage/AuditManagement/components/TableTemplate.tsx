@@ -1,4 +1,4 @@
-import {AuditOutlined,EyeOutlined,FileSearchOutlined} from '@ant-design/icons'
+import {AuditOutlined, EyeOutlined, FileSearchOutlined, FormOutlined, RollbackOutlined} from '@ant-design/icons'
 import {ActionType, ModalForm, ProColumns, ProFormTextArea, ProTable} from '@ant-design/pro-components';
 import {useBoolean, useRequest} from 'ahooks';
 import {App, Button, Form, Modal, Space} from 'antd';
@@ -16,7 +16,7 @@ import UploadMyFile from '@/components/UploadFile';
 import DetailPage from '@/pages/TeamManage/AuditManagement/components/Detail';
 import ARDetail from '@/pages/TeamManage/components/ARDetail';
 import {delArticle} from '@/services/team/article';
-import {getAuditList} from '@/services/team/audit';
+import {cancelAC, getAuditList} from '@/services/team/audit';
 import {formatPerfix, formatResponse, optionsToValueEnum, useDictCode} from '@/utils';
 import { IconFont } from '@/utils/const'
 import {ASTATUS, ATYPE, ROUTES} from '@/utils/enums';
@@ -76,6 +76,14 @@ const TableTemplate :FC = () => {
       }
 
     }
+    const editArticle = (record) => {
+        cancelAC(record.as_id,record.title).then((res) => {
+            if (res && res.code === 200) {
+                message.success('取消发布成功')
+                reloadTable()
+            }
+        })
+    }
 
     const columns: ProColumns<API.AUDITMANAGEMENT>[] = [
         {
@@ -122,7 +130,10 @@ const TableTemplate :FC = () => {
         /* 创建时间-搜索 */
         createTimeInSearch,
         {
-            ...operationColumn,
+            ...{
+                ...operationColumn,
+                width: 150,
+            },
             render: (_, record) => {
                 if(record.article_status === ASTATUS.CHECK) {
                     return (
@@ -134,6 +145,12 @@ const TableTemplate :FC = () => {
                 return <Space>
                     <Button type='link' icon={<EyeOutlined />} onClick={() => showPage(record)}>预览</Button>
                     <Button type='link' icon={<FileSearchOutlined />} onClick={() => showAudit(record)}>详情</Button>
+                    {
+                        record.article_status === '2' ? (
+                            <Button type='link' icon={<RollbackOutlined />} onClick={() => editArticle(record)}>取消发布</Button>
+                        ) : null
+                    }
+
                 </Space>
             },
         },

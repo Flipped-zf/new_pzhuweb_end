@@ -118,7 +118,7 @@ const FormTemplate: FC<any> = ({reloadTable,
             label="资源描述"
             tooltip="最长为 20个字符"
             placeholder="请输入名称"
-            rules={[{ required: true },{max: 20,message: '不超过200个字符'}]}
+            rules={[{ required: true },{max: 200,message: '不超过200个字符'}]}
           />
           <Row style={{ width: '100%' }}>
             <Col span={24}>

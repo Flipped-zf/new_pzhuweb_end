@@ -1,31 +1,19 @@
-/*
- * @Description: 表格列公共配置项
- * @Version: 2.0
- * @Author: 白雾茫茫丶
- * @Date: 2023-09-18 14:13:44
- * @LastEditors: 白雾茫茫丶
- * @LastEditTime: 2023-09-26 14:37:09
- */
-import { PlusOutlined } from '@ant-design/icons'
-import { ProColumns } from '@ant-design/pro-components'
-import { Access, FormattedMessage, useAccess } from '@umijs/max'
-import { Button, Space, Tag } from 'antd'
-import dayjs from 'dayjs'
-import { find, get, reduce, toNumber } from 'lodash-es'
-import { FC } from 'react'
+import { PlusOutlined } from '@ant-design/icons';
+import { ProColumns } from '@ant-design/pro-components';
+import { Access, FormattedMessage, useAccess } from '@umijs/max';
+import { Button, Space, Tag } from 'antd';
+import dayjs from 'dayjs';
+import { find, get, reduce, toNumber } from 'lodash-es';
+import { FC } from 'react';
 
-import { formatPathName, formatPerfix, getLocalStorageItem, randomTagColor } from '@/utils'
-import { FLAG_OPTS } from '@/utils/const'
-import { INTERNATION, LOCAL_STORAGE, OPERATION, ROUTES, STATUS } from '@/utils/enums'
-import permissions from '@/utils/permission'
-import type { PathNames } from '@/utils/types'
+import { formatPathName, formatPerfix, getLocalStorageItem, randomTagColor } from '@/utils';
+import { FLAG_OPTS } from '@/utils/const';
+import { INTERNATION, LOCAL_STORAGE, OPERATION, ROUTES, STATUS } from '@/utils/enums';
+import permissions from '@/utils/permission';
+import type { PathNames } from '@/utils/types';
 
 import defaultSettings from '../../../config/defaultSettings';
 
-/**
- * @description: 状态
- * @author: 白雾茫茫丶
- */
 export const statusColumn: ProColumns = {
   title: <FormattedMessage id={INTERNATION.STATUS} />,
   dataIndex: 'status',
@@ -34,15 +22,17 @@ export const statusColumn: ProColumns = {
   onFilter: true,
   align: 'center',
   valueEnum: {
-    [STATUS.DISABLE]: { text: <FormattedMessage id={INTERNATION.STATUS_DISABLE} />, status: 'Default' },
-    [STATUS.NORMAL]: { text: <FormattedMessage id={INTERNATION.STATUS_NORMAL} />, status: 'Processing' },
+    [STATUS.DISABLE]: {
+      text: <FormattedMessage id={INTERNATION.STATUS_DISABLE} />,
+      status: 'Default',
+    },
+    [STATUS.NORMAL]: {
+      text: <FormattedMessage id={INTERNATION.STATUS_NORMAL} />,
+      status: 'Processing',
+    },
   },
-}
+};
 
-/**
- * @description: 排序
- * @author: 白雾茫茫丶
- */
 export const sortColumn: ProColumns = {
   title: <FormattedMessage id={INTERNATION.SORT} />,
   dataIndex: 'sort',
@@ -53,12 +43,8 @@ export const sortColumn: ProColumns = {
   defaultSortOrder: 'descend',
   align: 'center',
   render: (text) => <Tag color={randomTagColor()}>{text}</Tag>,
-}
+};
 
-/**
- * @description: 创建时间
- * @author: 白雾茫茫丶
- */
 export const createTimeColumn: ProColumns = {
   title: <FormattedMessage id={INTERNATION.CREATED_TIME} />,
   dataIndex: 'created_time',
@@ -68,12 +54,8 @@ export const createTimeColumn: ProColumns = {
   defaultSortOrder: 'descend',
   align: 'center',
   width: 160,
-}
+};
 
-/**
- * @description: 创建时间-搜索
- * @author: 白雾茫茫丶
- */
 export const createTimeInSearch: ProColumns = {
   title: <FormattedMessage id={INTERNATION.CREATED_TIME} />,
   dataIndex: 'created_time',
@@ -81,19 +63,15 @@ export const createTimeInSearch: ProColumns = {
   hideInTable: true,
   search: {
     transform: (value) => {
-      console.log(value)
+      console.log(value);
       return {
         start_time: dayjs(value[0]).format('YYYY-MM-DD 00:00:00'),
         end_time: dayjs(value[1]).format('YYYY-MM-DD 23:59:59'),
       };
     },
   },
-}
+};
 
-/**
- * @description: 描述
- * @author: 白雾茫茫丶
- */
 export const describeColumn: ProColumns = {
   title: <FormattedMessage id={INTERNATION.DESCRIBE} />,
   dataIndex: 'describe',
@@ -101,12 +79,8 @@ export const describeColumn: ProColumns = {
   width: 140,
   align: 'center',
   hideInSearch: true,
-}
+};
 
-/**
- * @description: 操作菜单
- * @author: 白雾茫茫丶
- */
 export const operationColumn: ProColumns = {
   title: <FormattedMessage id={INTERNATION.OPERATION} />,
   valueType: 'option',
@@ -114,12 +88,8 @@ export const operationColumn: ProColumns = {
   align: 'center',
   fixed: 'right',
   key: 'option',
-}
+};
 
-/**
- * @description: 是否
- * @author: 白雾茫茫丶
- */
 export const flagColumn = (field: string): ProColumns => {
   return {
     title: <FormattedMessage id={formatPerfix(ROUTES.MENUMANAGEMENT, field)} />,
@@ -128,51 +98,49 @@ export const flagColumn = (field: string): ProColumns => {
     hideInSearch: true,
     width: 100,
     align: 'center',
-    render: (_, record) => <Tag color={randomTagColor()}>
-      {get(find(FLAG_OPTS, { value: record[field] }), 'label', '--')}
-    </Tag>,
-  }
-}
+    render: (_, record) => (
+      <Tag color={randomTagColor()}>
+        {get(find(FLAG_OPTS, { value: record[field] }), 'label', '--')}
+      </Tag>
+    ),
+  };
+};
 
-/**
- * @description: 渲染表单标题
- * @author: 白雾茫茫丶
- */
 export const renderFormTitle = (pathName: string, id: string, name: string) => {
   const result = (
     <Space size={0}>
-      <FormattedMessage id={`menu.${formatPathName(pathName)}.${id ? OPERATION.EDIT : OPERATION.ADD}`} />
+      <FormattedMessage
+        id={`menu.${formatPathName(pathName)}.${id ? OPERATION.EDIT : OPERATION.ADD}`}
+      />
       <FormattedMessage id={`pages.${formatPathName(pathName)}.title`} />
-      {
-        id && <div>
-          ：<span style={{
-            color:
-              get(getLocalStorageItem(LOCAL_STORAGE.LAYOUT), 'colorPrimary', defaultSettings.colorPrimary),
-          }}>{name}</span>
+      {id && (
+        <div>
+          ：
+          <span
+            style={{
+              color: get(
+                getLocalStorageItem(LOCAL_STORAGE.LAYOUT),
+                'colorPrimary',
+                defaultSettings.colorPrimary,
+              ),
+            }}
+          >
+            {name}
+          </span>
         </div>
-      }
+      )}
     </Space>
-  )
-  return result
-}
+  );
+  return result;
+};
 
-/**
- * @description: 计算表格滚动长度
- * @Author: 白雾茫茫丶
- */
-export const columnScrollX = (columns: ProColumns[]): number => reduce(
-  columns,
-  (sum: number, record: ProColumns) => sum + (toNumber(record.width) || 100),
-  0)
+export const columnScrollX = (columns: ProColumns[]): number =>
+  reduce(columns, (sum: number, record: ProColumns) => sum + (toNumber(record.width) || 100), 0);
 
-/**
- * @description: 新增按钮
- * @author: 白雾茫茫丶
- */
 type CreateButtonProps = {
   callback: () => void; // 点击按钮回调
   pathName: PathNames;
-}
+};
 export const CreateButton: FC<CreateButtonProps> = ({ callback, pathName }) => {
   // 权限定义集合
   const access = useAccess();
@@ -189,5 +157,5 @@ export const CreateButton: FC<CreateButtonProps> = ({ callback, pathName }) => {
         <FormattedMessage id={formatPerfix(pathName, OPERATION.ADD, true)} />
       </Button>
     </Access>
-  )
-}
+  );
+};

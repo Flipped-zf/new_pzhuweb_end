@@ -1,22 +1,14 @@
-/*
- * @Description: 富文本编辑器
- * @Version: 2.0
- * @Author: 白雾茫茫丶
- * @Date: 2023-08-29 13:41:04
- * @LastEditors: 白雾茫茫丶
- * @LastEditTime: 2023-08-29 16:28:41
- */
 import 'react-quill/dist/quill.snow.css';
 
 import { debounce } from 'lodash-es';
-import { FC } from 'react'
+import { FC } from 'react';
 import ReactQuill from 'react-quill';
 
 type IProps = {
   value?: string;
   onChange?: (value: string) => void;
   height?: number | string;
-}
+};
 
 const QuillEditor: FC<IProps> = ({ value, onChange, height = 200 }) => {
   // 自定义工具栏
@@ -47,7 +39,7 @@ const QuillEditor: FC<IProps> = ({ value, onChange, height = 200 }) => {
     ],
     // 方式3: 可以自己指定工具栏的容器
     // toolbar: "#rq-toolbar"
-  }
+  };
 
   // 文本框改变时的回调
   const handleChangeValue = debounce((content: string) => {
@@ -61,6 +53,6 @@ const QuillEditor: FC<IProps> = ({ value, onChange, height = 200 }) => {
       value={value}
       onChange={handleChangeValue}
     />
-  )
-}
-export default QuillEditor
+  );
+};
+export default QuillEditor;

@@ -79,7 +79,6 @@ const [isDraft,setDraft] = useState(false)
             required: '此项为必填项',
           },
         }}
-
         submitter={{
             // render: (props) => {
             //     if (props.step === 0) {
@@ -157,7 +156,7 @@ const [isDraft,setDraft] = useState(false)
             label="成果描述"
             tooltip="最长为 200个字符"
             placeholder="请输入成果描述"
-            rules={[{ required: true },{max: 20,message: '不超过200个字符'}]}
+            rules={[{ required: true },{max: 200,message: '不超过200个字符'}]}
           />
           <Row style={{ width: '100%' }}>
             <Col span={24}>

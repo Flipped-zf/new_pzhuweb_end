@@ -1,16 +1,10 @@
-/*
- * @Description: 全局公共方法
- * @Version: 2.0
- * @Author: 白雾茫茫丶
- * @Date: 2022-09-07 16:12:53
- * @LastEditors: 白雾茫茫丶
- * @LastEditTime: 2023-10-08 09:15:44
- */
+
 import type { ColumnsState, RequestData } from '@ant-design/pro-components';
 import { history } from '@umijs/max';
 import {data} from '@umijs/utils/compiled/cheerio/lib/api/attributes';
 import CryptoJS from 'crypto-js'; // AES/DES加密
 import { compact, eq, get, join, sample, startsWith } from 'lodash-es';
+import moment from 'moment';
 import { stringify } from 'querystring';
 import {useEffect, useState} from 'react';
 
@@ -20,10 +14,30 @@ import {getDictList} from '@/services/system/dict-manage';
 import { LOCAL_STORAGE, REQUEST_CODE, ROUTES } from '@/utils/enums'
 import type { InitialStateTypes, LockSleepTypes, PageResponse, Response } from '@/utils/types'
 
-/**
- * @description: 获取用户信息、菜单和权限
- * @author: 白雾茫茫丶
- */
+export function OverNumShow(str: string | number) {
+  if(!str) {
+    return 0
+  }
+  return Number(str) > 99 ? '99+' : Number(str)
+}
+
+export function findKey(option,key) {
+  return option?.find((item) => item.value === key).label ?? '暂无'
+}
+
+export function FormatTime(str: string) {
+  return moment(str).format('DD.MM.YYYY HH:mm')
+}
+
+export function ShowTagList(options:any[],keys:any[],other? : string[]) {
+
+  const list = keys.map((item,index) => findKey(options[index],item)) ?? []
+
+
+  return list.concat(other)
+}
+
+
 export const initUserAuthority = async (): Promise<InitialStateTypes> => {
   try {
     // 获取用户信息和菜单按钮权限
@@ -41,16 +55,10 @@ export const initUserAuthority = async (): Promise<InitialStateTypes> => {
   }
 }
 
-/**
- * @description: 判断请求是否成功
- * @author: 白雾茫茫丶
- */
+
 export const isSuccess = (code?: number): boolean => eq(code, REQUEST_CODE.SUCCESS)
 
-/**
- * @description: 格式化请求数据
- * @author: 白雾茫茫丶
- */
+
 export const formatResponse = <T extends any[]>(
   response: Response<T> |
     Response<PageResponse<T[number]>>): RequestData<T[number]> => {
@@ -64,29 +72,19 @@ export const formatResponse = <T extends any[]>(
   }
 }
 
-/**
- * @description: 将 pathname 转成国际化对应的 key，如：/administrative/jobs-management => administrative.jobs-management
- * @author: 白雾茫茫丶
- */
+
 export const formatPathName = (pathname: string): string => {
   return join(compact(pathname.split('/')), '.')
 }
 
-/**
- * @description: 统一国际化前缀
- * @param {boolean} isMenu
- * @Author: 白雾茫茫丶
- */
+
 export const formatPerfix = (route: string, suffix = '', isMenu = false): string => {
   // 国际化字符串
   const field = `${isMenu ? 'menu' : 'pages'}.${formatPathName(route)}${suffix ? '.' + suffix : ''}`
   return startsWith(route, 'global') ? route : field
 }
 
-/**
- * @description: 获取 localstorage 的值
- * @author: 白雾茫茫丶
- */
+
 export const getLocalStorageItem = <T>(key: string): T | null => {
   // 获取 值
   const item = localStorage.getItem(key);
@@ -99,35 +97,21 @@ export const getLocalStorageItem = <T>(key: string): T | null => {
   return result
 }
 
-/**
- * @description: 存储 localstorage 的值
- * @author: 白雾茫茫丶
- */
+
 export const setLocalStorageItem = <T>(key: string, value: T) => {
   const result = JSON.stringify(value);
   localStorage.setItem(key, result);
 }
 
-/**
- * @description: 移除 localstorage 的值
- * @author: 白雾茫茫丶
- */
+
 export const removeLocalStorageItem = (key: string) => {
   localStorage.removeItem(key);
 }
 
-/**
- * @description: AES/DES密钥
- * @author: 白雾茫茫丶
- */
 const CRYPTO_KEY = CryptoJS.enc.Utf8.parse('ABCDEF0123456789'); // 十六位十六进制数作为密钥
 const CRYPTO_IV = CryptoJS.enc.Utf8.parse('ABCDEF0123456789'); // 十六位十六进制数作为密钥偏移量
 
-/**
- * @description: AES/DES加密
- * @param {string} password
- * @Author: 白雾茫茫丶
- */
+
 export const encryptionAesPsd = (password: string): string => {
   const encrypted = CryptoJS.AES.encrypt(password, CRYPTO_KEY, {
     iv: CRYPTO_IV,
@@ -137,11 +121,7 @@ export const encryptionAesPsd = (password: string): string => {
   return encrypted.toString(); // 返回的是base64格式的密文
 };
 
-/**
- * @description: AES/DES解密
- * @param {string} password
- * @Author: 白雾茫茫丶
- */
+
 export const decryptionAesPsd = (password: string): string => {
   const decrypted = CryptoJS.AES.decrypt(password, CRYPTO_KEY, {
     iv: CRYPTO_IV,
@@ -151,10 +131,6 @@ export const decryptionAesPsd = (password: string): string => {
   return decrypted.toString(CryptoJS.enc.Utf8); // 返回的是解密后的字符串
 };
 
-/**
- * @description: 退出登录返回到登录页
- * @Author: 白雾茫茫丶
- */
 export const logoutToLogin = () => {
   const { search, pathname } = window.location;
   // 获取 LOCK_SLEEP 信息
@@ -179,30 +155,19 @@ export const logoutToLogin = () => {
   }
 }
 
-/**
- * @description: 获取当前时间
- * @Author: 白雾茫茫丶
- */
 export const timeFix = (): string => {
   const time = new Date()
   const hour = time.getHours()
   return hour < 9 ? '早上好' : hour <= 11 ? '上午好' : hour <= 13 ? '中午好' : hour < 20 ? '下午好' : '夜深了'
 }
 
-/**
- * @description: 随机欢迎语
- * @Author: 白雾茫茫丶
- */
+
 export const welcomeWords = (): string => {
   const words = ['休息一会儿吧', '准备吃什么呢?', '要不要打一把 LOL', '我猜你可能累了', '认真工作吧', '今天又是充满活力的一天']
   return sample(words)
 }
 
-/**
- * @description: 判断是否是HTTP或HTTPS链接
- * @param {string} link
- * @Author: 白雾茫茫丶
- */
+
 export const isHttpLink = (link: string): boolean => {
   const pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
@@ -214,10 +179,7 @@ export const isHttpLink = (link: string): boolean => {
   return pattern.test(link);
 }
 
-/**
- * @description: 默认不显示的 column 项
- * @author: 白雾茫茫丶
- */
+
 export const renderColumnsStateMap = (MENU_CFG: string[] = []) => {
   const result: Record<string, ColumnsState> = {}
   MENU_CFG.forEach((ele) => {
@@ -228,10 +190,8 @@ export const renderColumnsStateMap = (MENU_CFG: string[] = []) => {
   return result
 }
 
-/**
- * @description: Tag 标签随机颜色
- * @author: 白雾茫茫丶
- */
+
+
 export const randomTagColor = () => {
   const colors = ['magenta', 'red', 'volcano', 'orange', 'gold', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple']
   return sample(colors)
@@ -250,6 +210,18 @@ export const useDictCode = (code: string | string[]) => {
   },[])
 
     return codelist
+}
+
+export const useDictCodeAsync:() => Promise<any> = (code: string | string[]) => {
+
+
+  const params:string[] = typeof code === 'string' ? [code] : code
+
+  return new Promise((r) => {
+    getCodeList(params).then((res) => {
+      if(res.code === 200) { r(res.data)}
+    })
+  })
 }
 
 

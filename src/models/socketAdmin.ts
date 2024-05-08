@@ -26,10 +26,19 @@ export default function() {
             message: '下线通知',
             description: `操作人, ${res?.operater}!`,
           })
-
           eventBus.emit(BusinessEvents.USER_KICK)
         })
 
+        socket.on(BusinessEvents.COMMNT_MSG,(res) => {
+          eventBus.emit(BusinessEvents.COMMNT_MSG, res)
+          console.log('COMMNT_MSG', 123);
+
+        })
+        socket.on(BusinessEvents.DB_MSG,(res) => {
+          eventBus.emit(BusinessEvents.COMMNT_MSG, res)
+          console.log('DB_MSG', 123);
+
+        })
         socket.on(BusinessEvents.AUTH_FAILED,(res) => console.log(res))
       });
       //

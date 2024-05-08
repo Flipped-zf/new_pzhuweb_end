@@ -10,26 +10,14 @@ export const createDict = (
   options: Omit<API.DICTMANAGEMENT, 'dict_id' | 'founder' | 'created_time' | 'updated_time'>,
 ) => httpRequest.post<API.DICTMANAGEMENT>(`${baseURL}`, options);
 
-/**
- * @description: 更新角色数据
- * @param {API.ROLEMANAGEMENT} options
- * @Author: 白雾茫茫丶
- */
+
 export const updateDict = ({ dict_id, ...options }: API.DICTMANAGEMENT) =>
   httpRequest.put<number[]>(`${baseURL}/${dict_id}`, options);
 
-/**
- * @description: 删除角色数据
- * @param {string} role_id
- * @Author: 白雾茫茫丶
- */
+
 export const delDict = (dict_id: string) => httpRequest.delete<number>(`${baseURL}/${dict_id}`);
 
-/**
- * @description: 设置角色状态
- * @param {Data} options
- * @Author: 白雾茫茫丶
- */
+
 export const setDictStatus = ({ dict_id, status }: DictStatusParams) =>
   httpRequest.patch<number[]>(`${baseURL}/${dict_id}`, { status });
 
